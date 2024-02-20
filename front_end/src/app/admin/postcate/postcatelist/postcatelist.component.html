@@ -1,0 +1,44 @@
+
+<div  style="margin: 10px;">
+  <a routerLink="add">
+    <button type="button" class="btn rounded-pill btn-primary">Thêm
+    </button>
+  </a>
+</div>
+<div class="card">
+  <h5 class="card-header">Bảng loại bài viết</h5>
+  <div class="table-responsive text-nowrap">
+    <table id="myDataTable" class="myDataTable table table-striped table-bordered" style="width:100%">
+      <thead>
+        <tr class="text-nowrap" align="center">
+          <th>#</th>
+          <th>Tên</th>
+          <th>Mô tả</th>
+          <th>Chức năng</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr align="center" *ngFor="let pc of postcate;let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ pc.name_cate }}</td>
+          <td><span [innerHTML]="pc.description_cate"></span></td>
+          <td>
+            <a [routerLink]="'edit/' + pc.id_cate" style="margin-right:20px">
+              <button class="btn btn-sg btn-warning bx  bx-edit-alt" style="font-size: 1.1rem;"></button>
+            </a>
+            <!-- (click)="showProductDetail(c)" -->
+            <button class="btn btn-sg btn-info bx bxs-info-circle"  style="margin-right:20px;font-size: 1.1rem;">
+
+            </button>
+
+            <button class="btn btn-sg btn-danger bx bxs-trash" (click)="deletePostcate(pc.id_cate)">
+
+            </button>
+        </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!--/ Responsive Table -->

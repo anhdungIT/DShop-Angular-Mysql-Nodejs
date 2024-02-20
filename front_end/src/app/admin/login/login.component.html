@@ -1,0 +1,62 @@
+<div class="container-xxl">
+  <div class="authentication-wrapper authentication-basic container-p-y">
+    <div class="authentication-inner">
+
+
+      <div class="card">
+        <div class="card-body">
+
+          <h4 class="mb-2">Chào mừng tới đăng nhập quản trị</h4>
+          <p class="mb-4">Vui lòng đăng nhập vào tài khoản của bạn và bắt đầu cuộc phiêu lưu</p>
+          <div class="alert alert-danger" *ngIf="checkError">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>{{ checkError }}</strong>
+          </div>
+          <form id="formAuthentication" class="mb-3" [formGroup]="formLogin" (ngSubmit)="onLogin()">
+            <div class="mb-3">
+              <label for="email" class="form-label">Email or Username</label>
+              <input type="text" placeholder="Email" class="form-control" formControlName="email">
+              <div *ngIf="f['email'].touched && f['email'].errors">
+                <small class="help-block" *ngIf="f['email'].errors['required']">Vui lòng điền Email</small>
+                <small class="help-block" *ngIf="f['email'].errors['email']">Email không đúng định dạng</small>
+                <small class="help-block" *ngIf="f['email'].errors['minlength']">Email tối thiểu 8 kí tự</small>
+              </div>
+            </div>
+            <div class="mb-3 form-password-toggle">
+              <div class="d-flex justify-content-between">
+                <label class="form-label" for="password">Password</label>
+                <a href="auth-forgot-password-basic.html">
+                  <small>Quên mật khẩu?</small>
+                </a>
+              </div>
+              <div class="input-group input-group-merge">
+                <input type="password" placeholder="Password" formControlName="password" class="form-control">
+                <div *ngIf="f['password'].touched && f['password'].errors">
+                  <small class="help-block" *ngIf="f['password'].errors['required']">Vui lòng điền mật khẩu</small>
+                </div>
+                <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="remember-me"  />
+                <label class="form-check-label" for="remember-me"> Ghi nhớ đăng nhập </label>
+              </div>
+            </div>
+            <div class="mb-3">
+              <button class="btn btn-primary d-grid w-100" type="submit">Đăng Nhập</button>
+            </div>
+          </form>
+
+          <p class="text-center">
+            <span>Chưa có tài khoản?</span>
+            <a href="#">
+              <span>Tạo tài khoản</span>
+            </a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,201 @@
+/* You can add global styles to this file, and also import other style files */
+#myDataTable_paginate,
+.dataTables_filter {
+  margin-right: 40px !important;
+  margin-bottom: 25px;
+}
+
+.paginate_button {
+  padding: 10px;
+  background-color: #ddd;
+  color: black;
+  font-size: 15px;
+  margin-right: 5px;
+}
+
+.paginate_button:hover {
+  cursor: pointer;
+  background-color: #ddd;
+  opacity: .6;
+}
+
+.previous:hover.disabled,
+.next:hover.disabled {
+  cursor: not-allowed;
+  background-color: #c61f1f;
+  opacity: .8;
+}
+
+.dataTables_filter input {
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.cus-search {
+  margin: 15px 0;
+  width: 350px !important;
+}
+
+.container-filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-input {
+  margin-right: 10px;
+  /* Điều chỉnh khoảng cách giữa các phần tử */
+}
+
+.priceRange-area {
+  display: flex;
+  align-items: center;
+}
+
+#priceRange {
+  width: 110px;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 10px;
+  color: #333;
+}
+
+.custom-btn {
+  margin-left: 15px;
+}
+
+#scrollToTopBtn {
+  /* display: none; */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #fd7e14;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 10px;
+  font-size: 16px;
+  opacity: 0;
+  /* Bắt đầu với opacity 0 để ẩn nút */
+  transition: opacity 0.3s ease-in-out;
+  /* Thêm transition effect */
+}
+
+#scrollToTopBtn:hover {
+  cursor: pointer;
+  opacity: .7;
+}
+
+#scrollToTopBtn.show {
+  opacity: 1;
+  /* Hiển thị nút với opacity 1 */
+}
+
+/* css cho phần hóa đơn chi tiết */
+.section {
+  margin: 0px auto;
+  width: 900px;
+  background-color: #d2dae2;
+  height: auto;
+  padding: 20px 30px;
+
+}
+
+.sign1 {
+  margin-left: -25px;
+  line-height: 2rem;
+  color: var(--ck-color-button-cancel);
+  font-size: 1.2rem;
+}
+.rounded2{
+  border-radius: 1.25rem !important;
+}
+.sign2 {
+  margin-left: 40px;
+  line-height: 2rem;
+  color: #FD7272;
+  font-size: 1.2rem;
+}
+
+.header {
+  display: flex;
+}
+
+.header_img {
+  width: 40%;
+}
+
+.header_img_style {
+
+  height: 120px;
+  width: 230px;
+}
+
+.header_name {
+  width: 60%;
+  padding-left: 150px;
+
+}
+
+.header_name_p {
+
+  font-size: 1.2rem;
+  font-style: oblique;
+  color: #4b6584;
+}
+
+.container_header {
+  margin-left: 230px;
+  color: var(--ck-color-button-cancel);
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+
+.container_name_p {
+  font-size: 1.1rem;
+}
+
+
+.footer-order {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 80px;
+  width:100%;
+}
+
+.one{
+  width:50%;
+  text-align: center;
+}
+
+.two{
+  width:50%;
+  text-align: center;
+  align-items: center;
+}
+
+
+.footer_img_seller {
+  margin-left:50px;
+  border-radius: 50%;
+  width: 200px;
+}
+
+
+.footer_cutomer{
+  width:100%;
+  text-align: center;
+  align-items: center;
+}
+
+.footer_name_p {
+  font-size: 1.2rem;
+  font-style: oblique;
+  float: left;
+}
+
+.footer_cutomer_p {
+  font-size: 1.2rem;
+}
+

@@ -1,0 +1,132 @@
+<section class="banner-area organic-breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+      <div class="col-first">
+        <h1>Giỏ hàng</h1>
+        <nav class="d-flex align-items-center">
+          <a href="/">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+          <a href="Cart">Giỏ hàng</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Banner Area -->
+<div *ngIf="carts.length">
+  <section class="cart_area">
+    <div class="container">
+      <div class="cart_inner">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr align="center">
+                <th scope="col">STT</th>
+                <th scope="col">Sản phẩm</th>
+                <th scope="col">Giá tiền</th>
+                <th scope="col">Số lượng</th>
+                <th scope="col">Thành tiền</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let c of carts,let i = index" align="center">
+                <td>{{i+1}}</td>
+                <td>
+                  <div class="media">
+                    <div class="d-flex">
+                      <img [src]="'http://localhost:8080/' + c.img" style="width: 250px;height: 250px;" alt="">
+                    </div>
+                    <div class="media-body">
+                      <p>{{c.name}}</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <h5>${{c.price | number}}</h5>
+                </td>
+                <td>
+                  <div class="product_count">
+                    <input type="number" (change)="updateCart(i, $event)" min="1" max="100" [value]="c.quantity">
+                  </div>
+                </td>
+                <td>
+                  <h5>$ {{subTotal(c)|number}}</h5>
+                </td>
+                <td><button (click)="removeCart(i)" class="btn btn-sg btn-danger bx bxs-trash"></button></td>
+              </tr>
+              <tr class="bottom_button">
+                <td>
+
+                </td>
+                <td><a class="btn btn-danger" (click)="clearCart()" style="color: white;">Xóa toàn bộ giỏ hàng</a></td>
+
+                <td></td>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+                <td>
+                  <!-- <div class="cupon_text d-flex align-items-center">
+                                    <input type="text" placeholder="Coupon Code">
+                                    <a class="primary-btn" href="#">Áp dụng</a>
+                                    <a class="gray_btn" href="#">Đóng mã</a>
+                                </div> -->
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+
+                <td></td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                  <h5>Tổng tiền</h5>
+                </td>
+                <td>
+                  <h5>${{totalPrice|number}}</h5>
+                </td>
+              </tr>
+              <tr class="out_button_area">
+                <td></td>
+                <td></td>
+
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+                <td>
+                  <div class="checkout_btn_inner d-flex align-items-center">
+                    <a class="gray_btn" href="Figure-Category">Mua tiếp</a>
+                    <a class="primary-btn" href="Check-out">Đến trang thanh toán</a>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!--================Cart Area =================-->
+<div *ngIf="carts.length == 0">
+  <section class="cart_area">
+    <div class="container">
+      <h2>Bạn chưa mua gì cả!! <a href="Figure-Category" style="text-decoration: none;color: #71dd37;">Bấm vào đây</a>
+        để bắt đầu mua hàng nha ^^</h2>
+    </div>
+  </section>
+
+</div>

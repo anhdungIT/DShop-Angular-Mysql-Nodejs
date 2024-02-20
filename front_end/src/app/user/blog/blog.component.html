@@ -1,0 +1,164 @@
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+      <div class="col-first">
+        <h1>Trang bài viết</h1>
+        <nav class="d-flex align-items-center">
+          <a href="">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+          <a href="Blog">Bài viết</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Banner Area -->
+<!--================Blog Categorie Area =================-->
+<section class="blog_categorie_area">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="categories_post">
+          <img src="/assets/user-page/img/figure/banner1.png" style="width: 70%;height: 70%;" alt="post">
+          <div class="categories_details">
+            <div class="categories_text">
+              <a href="Blog">
+                <h5>Tất cả bài viết</h5>
+              </a>
+              <div class="border_line"></div>
+              <p>Tất cả bài viết</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4" *ngFor="let c of catepost">
+        <div class="categories_post">
+          <img src="/assets/user-page/img/figure/banner1.png" style="width: 70%;height: 70%;" alt="post">
+          <div class="categories_details">
+            <div class="categories_text">
+              <a [routerLink]="'/Blog-Cate/' + c.id_cate">
+                <h5>{{c.name_cate}}</h5>
+              </a>
+              <div class="border_line"></div>
+              <p [innerHTML]="c.description_cate"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!--================Blog Categorie Area =================-->
+
+<!--================Blog Area =================-->
+<section class="blog_area">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="blog_left_sidebar">
+          <article class="row blog_item" *ngFor="let p of post| paginate: config">
+            <div class="col-md-3">
+              <div class="blog_info text-right">
+                <!-- <div class="post_tag">
+                                  <a href="#">Food,</a>
+                                  <a class="active" href="#">Technology,</a>
+                                  <a href="#">Politics,</a>
+                                  <a href="#">Lifestyle</a>
+                              </div> -->
+                <ul class="blog_meta list">
+                  <li><a href="#">{{p.author}}<i class="lnr lnr-user"></i></a></li>
+                  <li><a href="#">{{p.updated_at| date:'yyyy-MM-dd'}}<i class="lnr lnr-calendar-full"></i></a></li>
+                  <!-- <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
+                                  <li><a href="#">06 Comments<i class="lnr lnr-bubble"></i></a></li> -->
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-9">
+              <div class="blog_post">
+                <img [src]="'http://localhost:8080/' + p.img" alt="">
+                <div class="blog_details">
+                  <a href="single-blog.html">
+                    <h2>{{p.title}}</h2>
+                  </a>
+                  <p [innerHTML]="p.description"></p>
+                  <a href="/Blog-Detail/{{p.id}}" class="white_bg_btn">Xem thêm</a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <div class="filter-bar d-flex flex-wrap align-items-center">
+            <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+          </div>
+          <!-- <nav class="blog-pagination justify-content-center d-flex">
+                      <ul class="pagination">
+                          <li class="page-item">
+                              <a href="#" class="page-link" aria-label="Previous">
+                                  <span aria-hidden="true">
+                                      <span class="lnr lnr-chevron-left"></span>
+                                  </span>
+                              </a>
+                          </li>
+                          <li class="page-item"><a href="#" class="page-link">01</a></li>
+                          <li class="page-item active"><a href="#" class="page-link">02</a></li>
+                          <li class="page-item"><a href="#" class="page-link">03</a></li>
+                          <li class="page-item"><a href="#" class="page-link">04</a></li>
+                          <li class="page-item"><a href="#" class="page-link">09</a></li>
+                          <li class="page-item">
+                              <a href="#" class="page-link" aria-label="Next">
+                                  <span aria-hidden="true">
+                                      <span class="lnr lnr-chevron-right"></span>
+                                  </span>
+                              </a>
+                          </li>
+                      </ul>
+                  </nav> -->
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="blog_right_sidebar">
+          <aside class="single_sidebar_widget search_widget">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Tìm kiếm bài viết" onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Tìm kiếm bài viết'">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button"><i class="lnr lnr-magnifier"></i></button>
+              </span>
+            </div><!-- /input-group -->
+            <div class="br"></div>
+          </aside>
+          <aside class="single_sidebar_widget post_category_widget">
+            <h4 class="widget_title">Loại bài viết</h4>
+            <ul class="list cat-list">
+              <li *ngFor="let c of catepost">
+                <a [routerLink]="'/Blog-Cate/' + c.id_cate" class="d-flex justify-content-between">
+                  <p>{{c.name_cate}}</p>
+                </a>
+              </li>
+            </ul>
+            <div class="br"></div>
+          </aside>
+          <aside class="single-sidebar-widget newsletter_widget">
+            <h4 class="widget_title">Bản tin</h4>
+            <p>
+              Nhận tất cả các bản tin mới nhất!!!
+            </p>
+            <div class="form-group d-flex flex-row">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+                </div>
+                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Nhập email"
+                  onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nhập email'">
+              </div>
+              <a href="#" class="bbtns">Gửi</a>
+            </div>
+            <p class="text-bottom">Bạn có thể bỏ theo dõi bất cứ lúc nào</p>
+          </aside>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--================Blog Area =================-->

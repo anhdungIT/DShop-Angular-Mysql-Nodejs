@@ -1,0 +1,72 @@
+    <!-- Start Banner Area -->
+    <section class="banner-area organic-breadcrumb">
+      <div class="container">
+          <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+              <div class="col-first">
+                  <h1>Trang thanh toán</h1>
+                  <nav class="d-flex align-items-center">
+                      <a href="">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+                      <a href="Check-out">Trang thanh toán</a>
+                  </nav>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!-- End Banner Area -->
+
+  <!--================Checkout Area =================-->
+  <section class="checkout_area section_gap">
+      <div class="container">
+          <div class="billing_details">
+              <div class="row">
+                  <div class="col-lg-8">
+                      <h3>Chi tiết giao hàng</h3>
+                      <form class="row contact_form" (ngSubmit)="onSubmit()" novalidate="novalidate">
+                        <div class="col-md-6 form-group p_star">
+                          <input type="text" class="form-control" id="first" placeholder="Nhập tên của bạn" name="name" [(ngModel)]="order.customerName">
+                        </div>
+                        <div class="col-md-6 form-group p_star">
+                          <input type="text" class="form-control" id="last" maxlength="10" placeholder="Nhập số điện thoại" name="phone" [(ngModel)]="order.customerMobile">
+                        </div>
+                        <div class="col-md-12 form-group">
+                          <input type="text" class="form-control" id="company" name="email" placeholder="Nhập địa chỉ email" [(ngModel)]="order.customerEmail">
+                        </div>
+                        <div class="col-md-12 form-group p_star">
+                          <input type="text" class="form-control" id="add1" placeholder="Nhập địa chỉ giao hàng" name="address" [(ngModel)]="order.customerAddress">
+                        </div>
+                        <div class="col-md-12 form-group p_star">
+                          <select class="country_select" name="payment" [(ngModel)]="order.paymentMethod">
+                            <option value="COD">Trả tiền khi nhận hàng</option>
+                            <option value="MoMo">MoMo</option>
+                          </select>
+                        </div>
+                        <div class="col-md-12 form-group">
+                          <textarea class="form-control" name="note" id="message" rows="1" placeholder="Ghi chú cho đơn hàng của bạn" [(ngModel)]="order.customerMessage"></textarea>
+                        </div>
+                        <!-- Thêm các trường cho orderDetail nếu cần -->
+                        <div class="col-md-12 form-group">
+                        <button type="submit" class="primary-btn" style="border-radius: 25px;padding: 0px 30px;">Gửi đơn hàng</button>
+                        </div>
+                      </form>
+
+                  </div>
+                  <div class="col-lg-4">
+                      <div class="order_box">
+                          <h2>Đơn hàng của bạn</h2>
+                          <ul class="list">
+                              <li><a href="#">Sản phẩm <span>Tổng</span></a></li>
+                              <li *ngFor="let c of carts"><a href="#"> {{ c.name.length > 21 ? (c.name | slice: 0:21) + '..' : c.name }}<span class="middle">x {{c.quantity}}</span> <span class="last">$ {{subTotal(c)|number}}</span></a></li>
+
+                          </ul>
+                          <ul class="list list_2">
+                              <li><a href="#">Tạm tính <span>$ {{totalPrice|number}}</span></a></li>
+                              <li><a href="#">Phí giao hàng <span>$ 0</span></a></li>
+                              <li><a href="#">Tổng <span>$ {{totalPrice|number}}</span></a></li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!--================End Checkout Area =================-->

@@ -1,0 +1,119 @@
+
+
+<section class="banner-area organic-breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+      <div class="col-first">
+        <h1>Trang mô hình</h1>
+        <nav class="d-flex align-items-center">
+          <a href="/">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+          <a href="Figure-Category">Trang mô hình</a>
+
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Banner Area -->
+<div class="container">
+  <div class="row">
+    <div class="col-xl-3 col-lg-4 col-md-5">
+      <div class="sidebar-categories">
+        <div class="head">Danh mục mô hình</div>
+        <ul class="main-categories">
+          <li class="main-nav-list">  <a [routerLink]="'/Figure-Category/'" >Tất cả</a></li>
+          <li class="main-nav-list" *ngFor="let c of categories">  <a [routerLink]="'/Figure-Category/' + c.id_cate" >{{ c.name_cate }}</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-categories">
+        <div class="head">Thương hiệu mô hình</div>
+        <ul class="main-categories">
+
+          <li class="main-nav-list" *ngFor="let b of brand"><a [routerLink]="'/Figure-Brand/' + b.id_brand">{{b.name_brand}}</a></li>
+
+
+        </ul>
+      </div>
+      <div class="sidebar-filter mt-50">
+
+        <!-- <div class="common-filter">
+
+          <form action="#">
+            <ul>
+              <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">Apple<span>(29)</span></label></li>
+              <li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="brand"><label for="asus">Asus<span>(29)</span></label></li>
+              <li class="filter-list"><input class="pixel-radio" type="radio" id="gionee" name="brand"><label for="gionee">Gionee<span>(19)</span></label></li>
+              <li class="filter-list"><input class="pixel-radio" type="radio" id="micromax" name="brand"><label for="micromax">Micromax<span>(19)</span></label></li>
+              <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="brand"><label for="samsung">Samsung<span>(19)</span></label></li>
+            </ul>
+          </form>
+        </div> -->
+
+        <!-- <div class="common-filter">
+          <div class="head">Price</div>
+          <div class="price-range-area">
+            <div id="price-range"></div>
+            <div class="value-wrapper d-flex">
+              <div class="price">Price:</div>
+              <span>$</span>
+              <div id="lower-value"></div>
+              <div class="to">to</div>
+              <span>$</span>
+              <div id="upper-value"></div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+    <div class="col-xl-9 col-lg-8 col-md-7">
+
+      <!-- Start Best Seller -->
+      <section class="lattest-product-area pb-40 category-list">
+        <div class="row" >
+          <div class="container">
+
+            <input type="text" class="form-control cus-search" [(ngModel)]="searchText" id="search_input" placeholder="Nhập từ khóa để tìm">
+
+        </div>
+          <!-- single product -->
+         <div class="col-lg-4 col-md-6" *ngFor="let f of figurebycate| productSearch:searchText | paginate: config">
+            <div class="single-product">
+              <a href="/Detail/{{f.id}}" style="text-decoration: none;">
+                <img style="height: 250px;" class="img-fluid" img [src]="'http://localhost:8080/' + f.img" alt=""></a>
+              <div class="product-details">
+                <h6 style="height: 35px;"><a href="/Detail/{{f.id}}" style="color: black;text-decoration: none;">{{f.name}}</a></h6>
+
+                <div class="price">
+                  <h6 class="l-through">${{f.price | number}}</h6>
+                <h6>${{f.promotionprice | number}}</h6>
+                </div>
+                <div class="prd-bottom">
+
+                  <a class="social-info" [style.cursor]="f.quantity < 1 ? 'not-allowed' : 'pointer'"
+                  [attr.disabled]="f.quantity < 1 ? true : null" (click)="f.quantity >= 1 && onAddCart(f)">
+                  <span class="ti-bag"></span>
+                  <p class="hover-text">{{f.quantity <1 ? "Hết hàng T.T" :"Thêm vào giỏ"}}</p>
+                </a>
+                  <a href="" class="social-info">
+                    <span class="lnr lnr-heart"></span>
+                    <p class="hover-text">Wishlist</p>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls> -->
+
+
+      <!-- End Best Seller -->
+      <!-- Start Filter Bar -->
+      <div class="filter-bar d-flex flex-wrap align-items-center">
+        <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+      </div>
+      <!-- End Filter Bar -->
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,58 @@
+<form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+  <h2 style="color: var(--gray);">Cập nhật trạng thái đơn hàng</h2>
+<div class="col-md">
+  <small class="text-light fw-semibold">Radio</small>
+  <div class="form-check mt-3">
+    <input
+      formControlName="status"
+      class="form-check-input"
+      type="radio"
+      value="pending"
+      id="defaultRadio1"
+    />
+    <label class="form-check-label" for="defaultRadio1"> Đang chờ xử lý </label>
+  </div>
+  <div class="form-check">
+    <input
+      formControlName="status"
+      class="form-check-input"
+      type="radio"
+      value="processing"
+      id="defaultRadio2"
+    />
+    <label class="form-check-label" for="defaultRadio2"> Đã xác nhận </label>
+  </div>
+  <div class="form-check">
+    <input
+      formControlName="status"
+      class="form-check-input"
+      type="radio"
+      value="shipped"
+      id="defaultRadio3"
+    />
+    <label class="form-check-label" for="defaultRadio3"> Đang vận chuyển </label>
+  </div>
+  <div class="form-check">
+    <input
+      formControlName="status"
+      class="form-check-input"
+      type="radio"
+      value="delivered"
+      id="defaultRadio4"
+    />
+    <label class="form-check-label" for="defaultRadio4"> Đã giao </label>
+  </div>
+  <div class="form-check">
+    <input
+      formControlName="status"
+      class="form-check-input"
+      type="radio"
+      value="cancelled"
+      id="defaultRadio5"
+    />
+    <label class="form-check-label" for="defaultRadio5"> Đã hủy </label>
+  </div>
+
+  <button class="btn btn-primary" style="margin-top: 20px;" type="submit">Cập nhật</button>
+</div>
+</form>
